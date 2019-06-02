@@ -10,17 +10,19 @@ import java.awt.event.WindowEvent;
 public class NumberGuess extends JFrame implements ActionListener
 {
     private Random rd=new Random();
-    private JTextField number=new JTextField("Enter a number");
-    private JTextField text=new JTextField();
+    private JTextArea number=new JTextArea("Enter a number");
+    private JTextArea text=new JTextArea();
     private JButton button=new JButton("Guess!");
     private int ans;
+    private int t=18;
     public NumberGuess()
     {
         super("Number Guessing Game");
-        ans=rd.nextInt()%1000+1000;
+        ans=rd.nextInt()%1000;
         number.setBounds(40, 40, 200, 20);
         button.setBounds(260, 40, 100, 20);
-        text.setBounds(40, 110, 200, 20);
+        text.setBounds(40, 110, 200, 200);
+        text.setText("--- READ ME FIRST ---\nYou have 18 times to try.\nThe range is [0,1000].");
         this.setLayout(null);
         this.setBounds(200, 200, 400, 400);
         this.add(number);
@@ -46,18 +48,24 @@ public class NumberGuess extends JFrame implements ActionListener
             inputnum=strint(input);
             if(inputnum<ans)
             {
-                text.setText("Blah! Too small!");
+                text.setText("Blah! Too small!\n"+"Remaining tries: "+t);
             }
             else
             {
                 if(inputnum==ans)
                 {
-                    text.setText("Yeah! You win!");
+                    text.setText("Yeah! You win!\n"+"Remaining tries: "+t);
+                    return;
                 }
                 else
                 {
-                    text.setText("Hey there! Too big!");
+                    text.setText("Hey there! Too big.\n"+"Remaining tries: "+t);
                 }
+            }
+            t--;
+            if(t==0)
+            {
+                text.setText("Oh no! You lose! Please try again.");
             }
         }
     }
