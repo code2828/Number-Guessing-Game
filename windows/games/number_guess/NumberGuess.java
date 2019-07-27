@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 
 public class NumberGuess extends JFrame implements ActionListener
 {
+    private static final long serialVersionUID = 1L;
     private Random rd=new Random();
     private JTextArea number=new JTextArea("Enter a number");
     private JTextArea text=new JTextArea();
