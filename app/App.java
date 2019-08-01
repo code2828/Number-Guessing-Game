@@ -33,6 +33,7 @@ public class App extends JFrame implements ActionListener {
         text.setBounds(40, 110, 200, 200);
         quit.setBounds(150, 320, 100, 25);
         text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is [0,1000).");
+        text.setEditable(false);
         this.setLayout(null);
         this.setBounds(200, 200, 400, 400);
         this.add(number);
