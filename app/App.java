@@ -19,7 +19,7 @@ public class App extends JFrame implements ActionListener {
     private static JTextArea text = new JTextArea();
     private static JButton button = new JButton("Guess!");
     private static JButton quit = new JButton("Quit game");
-    private static int ans, last=-1;
+    private static int ans;
     private static int t = 10;
 
     public App() {
@@ -51,18 +51,10 @@ public class App extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int inputnum = 0, tt = 0;
+        int inputnum = 0;
         String input = number.getText();
         if (e.getSource() == button) {
             inputnum = strint(input);
-            if(inputnum==last){
-                text.setText("Dude you! That's the same with last time!\nTry again.");
-            }
-            last = inputnum;
-            if (tt == inputnum) {
-                t++;
-            }
-            tt = inputnum;
             if (inputnum < ans) {
                 text.setText("Blah! Too small!\n" + "Remaining tries: " + t);
             } else {
