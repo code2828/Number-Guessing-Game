@@ -22,7 +22,9 @@ public class App extends JFrame implements ActionListener {
     private static JButton quit = new JButton("Quit game");
     private static JButton section = new JButton("Change bounds");
     private static int ans;
-    private static int t = 10,ub=0,lb=1000;
+    private static int t = 10;
+    private static String ubstr="0",lbstr="1000";
+    private static int ub,lb;
     private static boolean set = false;
 
     public App() {
@@ -85,15 +87,13 @@ public class App extends JFrame implements ActionListener {
             if (set) {
                 // JOptionPane.showMessageDialog(this,"Already set!");
             }
-            String opt = JOptionPane.showInputDialog(this, "Enter your desired upper bound.");
-            int option = strint(opt);
-            ub = option;
-            opt = JOptionPane.showInputDialog(this, "Enter you desired lower bound.");
-            option = strint(opt);
-            lb = option;
+            ubstr = JOptionPane.showInputDialog(this, "Enter your desired upper bound.");
+            ub = strint(ubstr);
+            lbstr = JOptionPane.showInputDialog(this, "Enter you desired lower bound.");
+            lb = strint(lbstr);
             JOptionPane.showMessageDialog(this, "Bounds successfully set!");
             set = true;
-            text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is ["++","+new +").");
+            text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is ["+lbstr+","+ubstr+").");
         }
     }
 
