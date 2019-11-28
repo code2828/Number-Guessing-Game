@@ -11,6 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import app.exception.Stringexceptions;
+import sun.security.pkcs11.wrapper.Constants;
 
 public class App extends JFrame implements ActionListener {
     private static final long serialVersionUID = 31828377563718273L;
@@ -92,7 +93,7 @@ public class App extends JFrame implements ActionListener {
             lb = option;
             JOptionPane.showMessageDialog(this, "Bounds successfully set!");
             set = true;
-            text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is ["+new String(lb)+","+new String(ub)+").");
+            text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is ["++","+new +").");
         }
     }
 
