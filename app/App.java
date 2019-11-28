@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import app.exception.Stringexceptions;
+import app.exception.*;
 import sun.security.pkcs11.wrapper.Constants;
 
 public class App extends JFrame implements ActionListener {
