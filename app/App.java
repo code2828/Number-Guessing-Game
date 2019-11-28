@@ -43,7 +43,7 @@ public class App extends JFrame implements ActionListener {
         this.add(quit);
         this.add(section);
         this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing(final WindowEvent e) {
                 System.exit(-1);
             }
         });
@@ -54,9 +54,9 @@ public class App extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         int inputnum = 0;
-        String input = number.getText();
+        final String input = number.getText();
         if (e.getSource() == button) {
             inputnum = strint(input);
             if (inputnum < ans) {
@@ -73,42 +73,38 @@ public class App extends JFrame implements ActionListener {
                 text.setText("Oh no! You lose! Please try again.");
             }
             t--;
-        }
-        else if (e.getSource() == quit) {
-            int option = JOptionPane.showOptionDialog(this, "Are you sure you want to quit?", "Confirmation", 0, 0, null, null, null);
-            if(option != 0)
-            {
+        } else if (e.getSource() == quit) {
+            final int option = JOptionPane.showOptionDialog(this, "Are you sure you want to quit?", "Confirmation", 0,
+                    0, null, null, null);
+            if (option != 0) {
                 return;
             }
             System.exit(0);
-        }
-        else if (e.getSource() == section) {
-            if(set) {
-//                JOptionPane.showMessageDialog(this,"Already set!");
+        } else if (e.getSource() == section) {
+            if (set) {
+                // JOptionPane.showMessageDialog(this,"Already set!");
             }
-            String opt = JOptionPane.showInputDialog(this,"Enter your desired upper bound.");
+            String opt = JOptionPane.showInputDialog(this, "Enter your desired upper bound.");
             int option = strint(opt);
             ub = option;
-            opt = JOptionPane.showInputDialog(this,"Enter you desired lower bound.");
+            opt = JOptionPane.showInputDialog(this, "Enter you desired lower bound.");
             option = strint(opt);
-            lb=option;
-            JOptionPane.showMessageDialog(this,"Bounds successfully set!");
+            lb = option;
+            JOptionPane.showMessageDialog(this, "Bounds successfully set!");
             set = true;
         }
     }
 
     public static int map(int n) {
-        if(n>ub)
-        {
-            n-=ub;
-        }
-        else if(n<lb)
-        {
-            n+=lb;
+        if (n > ub) {
+            n -= ub;
+        } else if (n < lb) {
+            n += lb;
         }
         return n;
     }
-    public static int strint(String n) {
+
+    public static int strint(final String n) {
         int r = 0;
         for (int i = 0; i < n.length(); i++) {
             if (n.charAt(i) < '0' || n.charAt(i) > '9') {
@@ -120,7 +116,7 @@ public class App extends JFrame implements ActionListener {
         return r / 10;
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         new App();
     }
 }
