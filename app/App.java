@@ -92,7 +92,7 @@ public class App extends JFrame implements ActionListener {
             lb = option;
             JOptionPane.showMessageDialog(this, "Bounds successfully set!");
             set = true;
-            text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is ["+String(lb)+","+String(ub)+").");
+            text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is ["+new String(lb)+","+new String(ub)+").");
         }
     }
 
