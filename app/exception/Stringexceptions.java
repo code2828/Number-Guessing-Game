@@ -5,9 +5,9 @@ import java.lang.Exception;
 /**
  * Stringexeptions
  */
-public class Stringexeptions{
+public class Stringexceptions{
     private static String expmsg;
-    public Stringexeptions(String e) {
+    public Stringexceptions(String e) {
         expmsg = e;
     }
     public static String getMsg() {
