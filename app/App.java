@@ -11,7 +11,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import app.exception.*;
-import sun.security.pkcs11.wrapper.Constants;
 
 public class App extends JFrame implements ActionListener {
     private static final long serialVersionUID = 31828377563718273L;
@@ -24,12 +23,12 @@ public class App extends JFrame implements ActionListener {
     private static int ans;
     private static int t = 10;
     private static String ubstr="0",lbstr="1000";
-    private static int ub,lb;
+    private static int ub=1000,lb=0;
     private static boolean set = false;
 
     public App() {
         super("Number Guessing Game");
-        ans = rd.nextInt();
+        ans = rd.nextInt()%(ub-lb)+lb-1;
         ans=map(ans);
         number.setBounds(40, 40, 200, 20);
         button.setBounds(260, 40, 100, 20);
@@ -45,8 +44,8 @@ public class App extends JFrame implements ActionListener {
         this.add(text);
         this.add(quit);
         this.add(section);
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(final WindowEvent e) {
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e) {
                 System.exit(-1);
             }
         });
@@ -57,20 +56,21 @@ public class App extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(final ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
         int inputnum = 0;
-        final String input = number.getText();
+        String input = number.getText();
         if (e.getSource() == button) {
             inputnum = strint(input);
+            System.out.print(inputnum);
+            System.out.print(' ');
+            System.out.println(ans);
             if (inputnum < ans) {
                 text.setText("Blah! Too small!\n" + "Remaining tries: " + t);
+            } else if (inputnum == ans) {
+                text.setText("Yeah! You win!\n");
+                return;
             } else {
-                if (inputnum == ans) {
-                    text.setText("Yeah! You win!\n" + "Remaining tries: " + t);
-                    return;
-                } else {
-                    text.setText("Hey there! Too big.\n" + "Remaining tries: " + t);
-                }
+                text.setText("Hey there! Too big.\n" + "Remaining tries: " + t);
             }
             if (t == 0) {
                 text.setText("Oh no! You lose! Please try again.");
@@ -85,15 +85,18 @@ public class App extends JFrame implements ActionListener {
             System.exit(0);
         } else if (e.getSource() == section) {
             if (set) {
-                // JOptionPane.showMessageDialog(this,"Already set!");
+                JOptionPane.showMessageDialog(this,"Already set! You cannot set twice in one game!  ");
             }
-            ubstr = JOptionPane.showInputDialog(this, "Enter your desired upper bound.");
-            ub = strint(ubstr);
-            lbstr = JOptionPane.showInputDialog(this, "Enter you desired lower bound.");
-            lb = strint(lbstr);
-            JOptionPane.showMessageDialog(this, "Bounds successfully set!");
-            set = true;
-            text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is ["+lbstr+","+ubstr+").");
+            else
+            {
+                ubstr = JOptionPane.showInputDialog(this, "Enter your desired upper bound.");
+                ub = strint(ubstr);
+                lbstr = JOptionPane.showInputDialog(this, "Enter you desired lower bound.");
+                lb = strint(lbstr);
+                JOptionPane.showMessageDialog(this, "Bounds successfully set!");
+                set = true;
+                text.setText("--- READ ME FIRST ---\nYou have 10 times to try.\nThe range is ["+lbstr+","+ubstr+").");
+            }
         }
     }
 
@@ -106,7 +109,7 @@ public class App extends JFrame implements ActionListener {
         return n;
     }
 
-    public static int strint(final String n) {
+    public static int strint(String n) {
         int r = 0;
         for (int i = 0; i < n.length(); i++) {
             if (n.charAt(i) < '0' || n.charAt(i) > '9') {
@@ -118,7 +121,7 @@ public class App extends JFrame implements ActionListener {
         return r / 10;
     }
 
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
         new App();
     }
 }
