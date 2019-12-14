@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"App","h":"","u":""},{"l":"Stringexceptions","h":"","u":""},{"l":"鎵�鏈夌被","h":"","u":"allclasses-index.html"}]
+typeSearchIndex = [{"p":"app","l":"App"},{"p":"app.exception","l":"Stringexceptions"},{"l":"所有类","url":"allclasses-index.html"}]

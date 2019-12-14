@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"app","h":"","u":""},{"l":"app.exception","h":"","u":""},{"l":"鎵�鏈夌▼搴忓寘","h":"","u":"allpackages-index.html"}]
+packageSearchIndex = [{"l":"app"},{"l":"app.exception"},{"l":"所有程序包","url":"allpackages-index.html"}]
